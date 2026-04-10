@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adam & Nina 🤍</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #1a1a1a, #2b2b2b);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* floating hearts */
+.heart {
+    position: fixed;
+    color: pink;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh); opacity: 0;}
+    50% {opacity: 1;}
+    100% {transform: translateY(-10vh); opacity: 0;}
+}
+
+/* title */
+h1 {
+    margin-top: 30px;
+    font-size: 40px;
+    color: #ffd6e0;
+}
+
+/* typing text */
+.typing {
+    font-size: 18px;
+    width: 80%;
+    margin: auto;
+    min-height: 60px;
+}
+
+/* circles */
+.circle {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,182,193,0.1);
+    border-radius: 50%;
+    margin: 60px auto;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+/* small circles */
+.small-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    padding: 15px;
+    font-size: 14px;
+}
+
+/* section title */
+.section-title {
+    font-size: 25px;
+    margin-top: 60px;
+    color: pink;
+}
+
+/* buttons */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 20px;
+    border: none;
+    background: pink;
+    cursor: pointer;
+}
+
+/* input */
+input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* music button */
+.music-btn {
+    margin-top: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="document.getElementById('music').play()">
+    Play Music 🤍
+</button>
+
+<h1>Adam 🤍 Nina</h1>
+
+<div class="typing" id="typing"></div>
+
+<!-- MESSAGE CIRCLES -->
+<div class="circle"><p>I wish you could see yourself the way I see you… you mean everything to me.</p></div>
+<div class="circle"><p>You are not alone anymore. I’m here. Always.</p></div>
+<div class="circle"><p>I’m so proud of you for staying and fighting.</p></div>
+<div class="circle"><p>Please stay… I need you here with me.</p></div>
+<div class="circle"><p>I’ll wait for you through everything.</p></div>
+<div class="circle"><p>You will heal… and I’ll be right there.</p></div>
+<div class="circle"><p>I love you more than you know 🤍</p></div>
+
+<!-- SAD -->
+<div class="section-title">When you are sad 🥺</div>
+<div>
+<div class="small-circle">Your smile makes my life brighter 🤍</div>
+<div class="small-circle">You are too precious to be sad</div>
+<div class="small-circle">Enough crying… I miss you 🥺</div>
+<div class="small-circle">Come here, I’ll hold you forever</div>
+</div>
+
+<!-- PROUD -->
+<div class="section-title">I’m proud of you 💗</div>
+<div>
+<div class="small-circle">You are strong</div>
+<div class="small-circle">You didn’t give up</div>
+<div class="small-circle">I see your effort</div>
+<div class="small-circle">You make me proud every day</div>
+</div>
+
+<!-- QUIZ -->
+<div class="section-title">Little Love Game 🎮</div>
+
+<p>Who loves the other the most?</p>
+<button onclick="wrong()">Adam</button>
+<button onclick="right()">Me</button>
+
+<p id="q1"></p>
+
+<p>When was our first kiss?</p>
+<input id="kiss" placeholder="Type the date or answer">
+<button onclick="checkDate()">Check</button>
+
+<p id="q2"></p>
+
+<script>
+// typing effect
+let text = "My love… I made this just for you because you deserve to feel how much you are loved.";
+let i = 0;
+
+function type() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 40);
+    }
+}
+type();
+
+// floating hearts
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "🤍";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 500);
+
+// quiz
+function right() {
+    document.getElementById("q1").innerHTML =
+        "Of course it's you 🤍 but I still love you the most 😌";
+}
+
+function wrong() {
+    document.getElementById("q1").innerHTML =
+        "Nooo 😤 I love you more, I won't let you win 🤍";
+}
+
+function checkDate() {
+    let answer = document.getElementById("kiss").value.trim().toLowerCase();
+
+    if (answer === "knissia") {
+        document.getElementById("q2").innerHTML =
+            "Yesss you got it right 🤍";
+    } else {
+        document.getElementById("q2").innerHTML =
+            "Nooo it was knissia 🤍 how could you forget 🥺";
+    }
+}
+</script>
+
+</body>
+</html>
